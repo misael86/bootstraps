@@ -33,6 +33,9 @@ module.exports = {
                 plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
             }
         },{
+            test: /\.json$/,
+            loader: 'json-loader'
+        },{
             test: /\.scss$/,
             exclude: /(node_modules|bower_components)/,
             loaders: [

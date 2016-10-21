@@ -5,3 +5,7 @@ declare module NodeJS {
         window?: any;
     }
 }
+
+interface Document {
+    parentWindow?: any;
+}

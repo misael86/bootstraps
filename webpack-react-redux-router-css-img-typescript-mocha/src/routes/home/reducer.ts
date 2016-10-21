@@ -2,7 +2,7 @@ import { DECREASE, INCREASE } from "./types";
 
 // ------------------------------------------------
 
-const initialState = 1;
+export const initialState = 1;
 export default function homeReducer(state= initialState, action: any) {
     switch (action.type) {
         case DECREASE:
