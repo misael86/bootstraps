@@ -2,8 +2,8 @@ import { expect } from "chai";
 
 // ------------------------------------------------
 
-import homeReducer from "./reducer";
-import { DECREASE, INCREASE } from "./types";
+import homeReducer from "../../../src/routes/home/reducer";
+import { DECREASE, INCREASE } from "../../../src/routes/home/types";
 
 // ------------------------------------------------
 

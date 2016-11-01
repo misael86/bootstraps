@@ -26,6 +26,7 @@ class Home extends React.Component<any, any> {
                 </h1>
                 <img src={img}/>
                 <h2>Value: {home}</h2>
+                <input id="checkbox" className="checkbox" type="checkbox" checked={true} />
                 <button onClick={this.doDecrease}>DECREASE</button>
                 <button onClick={this.doIncrease}>INCREASE</button>
             </div>

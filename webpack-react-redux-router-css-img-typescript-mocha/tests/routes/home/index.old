@@ -6,8 +6,8 @@ import { combineReducers, createStore } from "redux";
 
 // ------------------------------------------------
 
-import Home from "./index";
-import { initialState } from "./reducer";
+import Home from "../../../src/routes/home/index";
+import { initialState } from "../../../src/routes/home/reducer";
 
 // ------------------------------------------------
 
