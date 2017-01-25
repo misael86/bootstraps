@@ -10,19 +10,17 @@ function base(method: string, uri: string, data?: any) {
         body: data,
         method,
         uri,
-        withCredentials: false
+        withCredentials: false,
     };
 
     return new Promise((resolve: any, reject: any) => {
-        request(options, handleResponse.bind(this, resolve, reject));
+        request(options, () => handleResponse.bind(resolve, reject));
     });
 }
 
 function handleResponse(resolve: any, reject: any, error: any, response: http.IncomingMessage, body: any) {
-    console.log(error, response.statusCode, response.headers, body);
-
     const jsonType = "application/json";
-    const typeHeader = response.headers["content-type"];
+    const typeHeader = response.headers ? response.headers["content-type"] : "";
     const isJson = typeHeader.indexOf(jsonType) !== -1;
 
     switch (response.statusCode) {
@@ -32,7 +30,11 @@ function handleResponse(resolve: any, reject: any, error: any, response: http.In
             break;
 
         default:
-            reject(error);
+            console.log(response.statusCode, response.statusMessage, error);
+            const err = new Error();
+            err.message = error ? error.message : "Ops, something went wrong!";
+            err.stack = error ? error.stack : "N/A";
+            reject(err);
             break;
     }
 }

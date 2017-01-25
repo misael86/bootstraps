@@ -3,7 +3,10 @@ import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { Route, Router, browserHistory } from "react-router";
 import { routerReducer, syncHistoryWithStore } from "react-router-redux";
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import * as logger from "redux-logger";
+import promise from "redux-promise-middleware";
+import thunk from "redux-thunk";
 
 // ------------------------------------------------
 
@@ -16,9 +19,13 @@ const reducer = combineReducers({
     home: homeReducer,
     routing: routerReducer,
 });
-const store = createStore(reducer);
 
+const middleWare = applyMiddleware(promise(), thunk, logger());
+const store = createStore(reducer, middleWare);
 const history = syncHistoryWithStore(browserHistory, store);
+
+// ------------------------------------------------
+
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>

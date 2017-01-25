@@ -1,6 +1,13 @@
-import { DECREASE, INCREASE } from "./types";
+import * as repository from "../../repositories/crud";
+import { DECREASE, FETCH, INCREASE } from "./types";
 
 // ------------------------------------------------
+
+export function decrease() {
+    return {
+        type: DECREASE,
+    };
+}
 
 export function increase() {
     return {
@@ -8,8 +15,16 @@ export function increase() {
     };
 }
 
-export function decrease() {
+export function loadError() {
     return {
-        type: DECREASE,
+        payload: repository.get(""),
+        type: FETCH,
+    };
+}
+
+export function fetchSuccess() {
+    return {
+        payload: repository.get(""),
+        type: FETCH,
     };
 }

@@ -12,7 +12,7 @@ var debug = !nodeEnv || nodeEnv.indexOf('production') === -1;
 module.exports = {
     devtool: debug ? 'inline-sourcemap' : null,
     entry: {
-        app: ["./src/main.tsx"]
+        app: ["./src/app.tsx"]
     },
     resolve: {
         extensions: ['', '.jsx', '.ts', '.js', '.tsx', '.css', '.scss']
